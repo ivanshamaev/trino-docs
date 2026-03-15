@@ -45,9 +45,11 @@
         toggle.textContent = isDark ? '☀️' : '🌙';
         toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
         toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        toggle.type = 'button';
         
         toggle.addEventListener('click', function(e) {
             e.preventDefault();
+            e.stopPropagation();
             const newDarkMode = !getTheme();
             applyTheme(newDarkMode);
         });
@@ -63,13 +65,43 @@
         // Create and insert toggle button
         const toggle = createToggleButton();
         
-        // Try to insert into header/navigation area
-        const header = document.querySelector('.md-header, .navbar, .navbar-header, header, [role="banner"]');
-        if (header) {
-            header.appendChild(toggle);
-        } else {
-            // Fallback: insert at top of body
-            document.body.insertBefore(toggle, document.body.firstChild);
+        // Try different selectors for search box and header
+        let inserted = false;
+        
+        // Try to find searchbox container (Sphinx default)
+        const searchBox = document.querySelector('.search, .search_form, .searchbox, [role="search"]');
+        if (searchBox && searchBox.parentNode) {
+            searchBox.parentNode.insertBefore(toggle, searchBox);
+            inserted = true;
+        }
+        
+        // Try navbar/header right side
+        if (!inserted) {
+            const navbar = document.querySelector('.navbar, .navbar-top, .header-top, .header-nav, [role="navigation"] header');
+            if (navbar) {
+                navbar.appendChild(toggle);
+                inserted = true;
+            }
+        }
+        
+        // Try to find any element with search text input
+        if (!inserted) {
+            const searchInput = document.querySelector('input[type="search"], input.searchbox, .search input');
+            if (searchInput && searchInput.parentNode) {
+                searchInput.parentNode.appendChild(toggle);
+                inserted = true;
+            }
+        }
+        
+        // Fallback: add to document header or body
+        if (!inserted) {
+            const header = document.querySelector('header, [role="banner"], .md-header');
+            if (header) {
+                header.appendChild(toggle);
+                inserted = true;
+            } else {
+                document.body.appendChild(toggle);
+            }
         }
         
         // Listen for system theme changes

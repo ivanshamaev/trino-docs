@@ -133,29 +133,34 @@ button:hover, .btn:hover {
 
 /* Dark mode toggle button */
 #dark-mode-toggle {
-    position: fixed;
-    bottom: 20px;
-    right: 20px;
-    z-index: 1000;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
+    position: relative;
+    z-index: 100;
+    width: 40px;
+    height: 40px;
+    border-radius: 4px;
     background-color: var(--accent-color);
     color: #ffffff;
     border: none;
-    font-size: 24px;
+    font-size: 20px;
     cursor: pointer;
-    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
-    display: flex;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
+    display: inline-flex;
     align-items: center;
     justify-content: center;
     transition: all 0.3s ease;
+    margin: 0 5px;
+    padding: 0;
+    vertical-align: middle;
 }
 
 #dark-mode-toggle:hover {
     background-color: var(--accent-hover);
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
-    transform: scale(1.1);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+    transform: scale(1.05);
+}
+
+#dark-mode-toggle:active {
+    transform: scale(0.95);
 }
 
 /* Collapsible menu styles */
@@ -251,6 +256,17 @@ blockquote {
     color: var(--text-secondary);
 }
 
+/* Search container - ensure button aligns properly */
+.search, .searchbox, [role="search"] {
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+.search > *, .searchbox > *, [role="search"] > * {
+    vertical-align: middle;
+}
+
 /* Print styles */
 @media print {
     #dark-mode-toggle {
@@ -266,10 +282,9 @@ blockquote {
 /* Responsive */
 @media (max-width: 768px) {
     #dark-mode-toggle {
-        bottom: 10px;
-        right: 10px;
-        width: 45px;
-        height: 45px;
-        font-size: 20px;
+        width: 36px;
+        height: 36px;
+        font-size: 18px;
+        margin: 0 3px;
     }
 }
