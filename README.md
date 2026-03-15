@@ -1,6 +1,6 @@
 # Trino Documentation
 
-Документация Trino, собранная с [MkDocs Material](https://squidfunk.github.io/mkdocs-material/).
+[GitHub Pages](https://squidfunk.github.io/mkdocs-material/](https://ivanshamaev.github.io/trino-docs/).
 
 ## Локальная сборка
 
