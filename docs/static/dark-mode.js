@@ -28,7 +28,7 @@
         }
         localStorage.setItem(DARK_MODE_KEY, isDark);
         
-        // Update toggle button if it exists
+        // Update toggle button
         const toggle = document.getElementById('dark-mode-toggle');
         if (toggle) {
             toggle.textContent = isDark ? '☀️' : '🌙';
@@ -36,72 +36,21 @@
         }
     }
     
-    // Create toggle button
-    function createToggleButton() {
-        const isDark = getTheme();
-        const toggle = document.createElement('button');
-        toggle.id = 'dark-mode-toggle';
-        toggle.className = 'dark-mode-toggle';
-        toggle.textContent = isDark ? '☀️' : '🌙';
-        toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        toggle.setAttribute('title', isDark ? 'Switch to light mode' : 'Switch to dark mode');
-        toggle.type = 'button';
-        
-        toggle.addEventListener('click', function(e) {
-            e.preventDefault();
-            e.stopPropagation();
-            const newDarkMode = !getTheme();
-            applyTheme(newDarkMode);
-        });
-        
-        return toggle;
-    }
-    
     // Initialize on DOM ready
     function init() {
         // Apply theme immediately
         applyTheme(getTheme());
         
-        // Create and insert toggle button
-        const toggle = createToggleButton();
-        
-        // Try different selectors for search box and header
-        let inserted = false;
-        
-        // Try to find searchbox container (Sphinx default)
-        const searchBox = document.querySelector('.search, .search_form, .searchbox, [role="search"]');
-        if (searchBox && searchBox.parentNode) {
-            searchBox.parentNode.insertBefore(toggle, searchBox);
-            inserted = true;
-        }
-        
-        // Try navbar/header right side
-        if (!inserted) {
-            const navbar = document.querySelector('.navbar, .navbar-top, .header-top, .header-nav, [role="navigation"] header');
-            if (navbar) {
-                navbar.appendChild(toggle);
-                inserted = true;
-            }
-        }
-        
-        // Try to find any element with search text input
-        if (!inserted) {
-            const searchInput = document.querySelector('input[type="search"], input.searchbox, .search input');
-            if (searchInput && searchInput.parentNode) {
-                searchInput.parentNode.appendChild(toggle);
-                inserted = true;
-            }
-        }
-        
-        // Fallback: add to document header or body
-        if (!inserted) {
-            const header = document.querySelector('header, [role="banner"], .md-header');
-            if (header) {
-                header.appendChild(toggle);
-                inserted = true;
-            } else {
-                document.body.appendChild(toggle);
-            }
+        // Get toggle button
+        const toggle = document.getElementById('dark-mode-toggle');
+        if (toggle) {
+            // Add click handler
+            toggle.addEventListener('click', function(e) {
+                e.preventDefault();
+                e.stopPropagation();
+                const newDarkMode = !getTheme();
+                applyTheme(newDarkMode);
+            });
         }
         
         // Listen for system theme changes
