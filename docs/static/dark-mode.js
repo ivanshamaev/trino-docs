@@ -1,14 +1,17 @@
 // Dark mode toggle for Sphinx documentation
 (function() {
-    const DARK_MODE_KEY = 'sphinx-dark-mode';
+    'use strict';
     
-    // Detect system preference
+    const DARK_MODE_KEY = 'sphinx-dark-mode';
+    const DARK_CLASS = 'dark-mode';
+    
+    // Get system preference
     function getSystemPreference() {
         return window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches;
     }
     
-    // Get current theme
-    function getTheme() {
+    // Get current theme state
+    function isDarkMode() {
         const saved = localStorage.getItem(DARK_MODE_KEY);
         if (saved !== null) {
             return saved === 'true';
@@ -16,59 +19,73 @@
         return getSystemPreference();
     }
     
-    // Apply theme
-    function applyTheme(isDark) {
-        const html = document.documentElement;
-        if (isDark) {
-            html.setAttribute('data-theme', 'dark');
-            document.body.classList.add('dark-mode');
-        } else {
-            html.setAttribute('data-theme', 'light');
-            document.body.classList.remove('dark-mode');
-        }
-        localStorage.setItem(DARK_MODE_KEY, isDark);
+    // Toggle dark mode
+    function toggleDarkMode() {
+        const newState = !isDarkMode();
+        setDarkMode(newState);
+    }
+    
+    // Set dark mode state
+    function setDarkMode(enabled) {
+        localStorage.setItem(DARK_MODE_KEY, enabled.toString());
         
-        // Update toggle button
-        const toggle = document.getElementById('dark-mode-toggle');
-        if (toggle) {
-            toggle.textContent = isDark ? '☀️' : '🌙';
-            toggle.setAttribute('aria-label', isDark ? 'Switch to light mode' : 'Switch to dark mode');
+        if (enabled) {
+            document.body.classList.add(DARK_CLASS);
+            document.documentElement.setAttribute('data-theme', 'dark');
+        } else {
+            document.body.classList.remove(DARK_CLASS);
+            document.documentElement.setAttribute('data-theme', 'light');
+        }
+        
+        updateButton();
+    }
+    
+    // Update button display
+    function updateButton() {
+        const button = document.getElementById('dark-mode-toggle');
+        if (button) {
+            button.textContent = isDarkMode() ? '☀️' : '🌙';
+            button.setAttribute('title', isDarkMode() ? 'Switch to light mode' : 'Switch to dark mode');
         }
     }
     
-    // Initialize on DOM ready
+    // Initialize dark mode
     function init() {
-        // Apply theme immediately
-        applyTheme(getTheme());
+        console.log('Initializing dark mode...');
         
-        // Get toggle button
-        const toggle = document.getElementById('dark-mode-toggle');
-        if (toggle) {
-            // Add click handler
-            toggle.addEventListener('click', function(e) {
+        // Set initial state
+        setDarkMode(isDarkMode());
+        
+        // Find and setup button
+        const button = document.getElementById('dark-mode-toggle');
+        if (button) {
+            console.log('Dark mode button found, setting up listener...');
+            
+            button.removeEventListener('click', toggleDarkMode);
+            button.addEventListener('click', function(e) {
                 e.preventDefault();
                 e.stopPropagation();
-                const newDarkMode = !getTheme();
-                applyTheme(newDarkMode);
+                console.log('Dark mode toggle clicked');
+                toggleDarkMode();
             });
-        }
-        
-        // Listen for system theme changes
-        if (window.matchMedia) {
-            const darkModeQuery = window.matchMedia('(prefers-color-scheme: dark)');
-            darkModeQuery.addEventListener('change', function(e) {
-                const saved = localStorage.getItem(DARK_MODE_KEY);
-                if (saved === null) {
-                    applyTheme(e.matches);
-                }
-            });
+            
+            button.style.cursor = 'pointer';
+        } else {
+            console.log('Dark mode button not found');
         }
     }
     
-    // Run on DOM ready
+    // Initialize on load
     if (document.readyState === 'loading') {
         document.addEventListener('DOMContentLoaded', init);
     } else {
         init();
     }
+    
+    // Also initialize on window load for extra safety
+    window.addEventListener('load', init);
+    
+    // Expose toggle globally for debugging
+    window.toggleDarkMode = toggleDarkMode;
+    window.isDarkMode = isDarkMode;
 })();
