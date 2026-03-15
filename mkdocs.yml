@@ -61,7 +61,47 @@ nav:
   - Installation: installation.md
   - Client: client.md
   - Security: security.md
-  - Admin: admin.md
+  - Admin:
+    - Administration: admin.md
+    - Web UI: admin/web-interface.md
+    - Preview Web UI: admin/preview-web-interface.md
+    - Logging: admin/logging.md
+    - Tuning Trino: admin/tuning.md
+    - Monitoring with JMX: admin/jmx.md
+    - Observability with OpenTelemetry: admin/opentelemetry.md
+    - Trino metrics with OpenMetrics: admin/openmetrics.md
+    - Properties reference: admin/properties.md
+    - Spill to disk: admin/spill.md
+    - Resource groups: admin/resource-groups.md
+    - Session property managers: admin/session-property-managers.md
+    - Distributed sort: admin/dist-sort.md
+    - Dynamic filtering: admin/dynamic-filtering.md
+    - Graceful shutdown: admin/graceful-shutdown.md
+    - Fault-tolerant execution: admin/fault-tolerant-execution.md
+    - Event listeners:
+      - HTTP event listener: admin/event-listeners-http.md
+      - Kafka event listener: admin/event-listeners-kafka.md
+      - MySQL event listener: admin/event-listeners-mysql.md
+      - OpenLineage event listener: admin/event-listeners-openlineage.md
+    - Properties (detailed):
+      - General properties: admin/properties-general.md
+      - Client protocol properties: admin/properties-client-protocol.md
+      - HTTP server properties: admin/properties-http-server.md
+      - Resource management properties: admin/properties-resource-management.md
+      - Query management properties: admin/properties-query-management.md
+      - Catalog management properties: admin/properties-catalog.md
+      - SQL environment properties: admin/properties-sql-environment.md
+      - Spilling properties: admin/properties-spilling.md
+      - Exchange properties: admin/properties-exchange.md
+      - Task properties: admin/properties-task.md
+      - Write partitioning properties: admin/properties-write-partitioning.md
+      - Writer scaling properties: admin/properties-writer-scaling.md
+      - Node scheduler properties: admin/properties-node-scheduler.md
+      - Optimizer properties: admin/properties-optimizer.md
+      - Logging properties: admin/properties-logging.md
+      - Web UI properties: admin/properties-web-interface.md
+      - Regular expression function properties: admin/properties-regexp-function.md
+      - HTTP client properties: admin/properties-http-client.md
   - Optimizer: optimizer.md
   - Connector: connector.md
   - Object storage: object-storage.md
