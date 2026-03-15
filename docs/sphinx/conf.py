@@ -142,6 +142,7 @@ html_sidebars = {
 html_theme_options = {
     'base_url': html_baseurl,
     'globaltoc_depth': -1,
+    'globaltoc_collapse': True,
     'theme_color': '2196f3',
     'color_primary': '',  # set in CSS
     'color_accent': '',   # set in CSS
@@ -155,6 +156,10 @@ html_theme_options = {
 
 html_css_files = [
     'trino.css',
+]
+
+html_js_files = [
+    'collapsible-menu.js',
 ]
 
 suppress_warnings = [

@@ -1,0 +1,55 @@
+/* Collapsible menu styles */
+.globaltoc ul ul {
+    margin-left: 10px;
+}
+
+.toctree-toggle {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transition: transform 0.2s ease-in-out;
+    color: #2196f3;
+    font-weight: bold;
+}
+
+.toctree-toggle:hover {
+    opacity: 0.7;
+}
+
+/* Style for the main navigation */
+.globaltoc {
+    font-size: 14px;
+}
+
+.globaltoc li {
+    margin: 2px 0;
+}
+
+.globaltoc a {
+    text-decoration: none;
+    color: #424242;
+    transition: color 0.2s;
+}
+
+.globaltoc a:hover {
+    color: #2196f3;
+}
+
+.globaltoc a.current {
+    color: #2196f3;
+    font-weight: 600;
+}
+
+/* Nested list styling */
+.globaltoc ul ul a {
+    padding-left: 5px;
+}
+
+.globaltoc ul ul ul a {
+    padding-left: 10px;
+}
+
+.globaltoc ul ul ul ul a {
+    padding-left: 15px;
+}
