@@ -128,7 +128,7 @@ html_static_path = ['static']
 html_title = '%s %s Documentation' % (project, release)
 
 html_logo = 'images/trino.svg'
-html_baseurl = 'https://trino.io/docs/current/'
+html_baseurl = 'https://ivanshamaev.github.io/trino-docs/'
 
 html_permalinks = True
 html_permalinks_icon = '#'
@@ -142,11 +142,10 @@ html_sidebars = {
 html_theme_options = {
     'base_url': html_baseurl,
     'globaltoc_depth': -1,
-    'globaltoc_collapse': True,
     'theme_color': '2196f3',
     'color_primary': '',  # set in CSS
     'color_accent': '',   # set in CSS
-    'repo_url': 'https://github.com/trinodb/trino',
+    'repo_url': 'https://github.com/ivanshamaev/trino-docs',
     'repo_name': 'Trino',
     'version_json': '../versions.json',
     'nav_previous_text': 'Previous',
@@ -156,10 +155,6 @@ html_theme_options = {
 
 html_css_files = [
     'trino.css',
-]
-
-html_js_files = [
-    'collapsible-menu.js',
 ]
 
 suppress_warnings = [
