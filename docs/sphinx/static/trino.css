@@ -156,3 +156,18 @@ button.copybtn {
     position: relative;
     top: -5.5rem;
 }
+
+/* custom */
+/* стрелка у пунктов меню с подстраницами */
+.md-sidebar .toctree-l1 > a::after,
+.md-sidebar .toctree-l2 > a::after {
+    content: "▸";
+    float: right;
+    font-size: 0.8em;
+    transition: transform 0.2s ease;
+}
+
+/* когда раздел открыт */
+.md-sidebar .current > a::after {
+    transform: rotate(90deg);
+}
