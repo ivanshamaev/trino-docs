@@ -1,3 +1,6 @@
+# GitHub Pages
+[trino-docs](https://ivanshamaev.github.io/trino-docs/)
+
 # Trino documentation
 
 The `docs` module contains the reference documentation for Trino.
