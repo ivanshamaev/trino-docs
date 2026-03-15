@@ -23,11 +23,18 @@ mkdocs build
 
 ## Публикация на GitHub Pages
 
-1. В настройках репозитория: **Settings → Pages**
-2. В разделе **Build and deployment** выберите **Source**: **GitHub Actions**
-3. При пуше в ветку `main` (или `master`) workflow `.github/workflows/deploy.yml` соберёт сайт и опубликует его на GitHub Pages.
+**Сначала один раз включите Pages в настройках репозитория**, иначе деплой из Actions вернёт 404:
 
-URL сайта: `https://<username>.github.io/<repo>/` (для организации: `https://<org>.github.io/<repo>/`).
+1. Откройте **Settings → Pages**:  
+   https://github.com/ivanshamaev/trino-docs/settings/pages
+2. В блоке **Build and deployment** в поле **Source** выберите **GitHub Actions** (не «Deploy from a branch»).
+3. Сохраните. После этого при пуше в `main` (или `master`) workflow соберёт сайт и опубликует его.
+
+URL сайта: `https://ivanshamaev.github.io/trino-docs/`
+
+### Ошибка «Failed to create deployment (status: 404)»
+
+Она появляется, если в **Settings → Pages** не выбран источник **GitHub Actions**. Выберите его, сохраните настройки и заново запустите workflow (повторный пуш или **Actions → Deploy docs to GitHub Pages → Run workflow**).
 
 ## Примечание
 

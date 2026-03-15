@@ -3,44 +3,46 @@
 
 site_name: Trino Documentation
 site_description: Documentation for Trino distributed SQL query engine
-site_author: Trino
-
-repo_url: https://github.com/trinodb/trino
-edit_uri: edit/main/
+site_author: trino-docs
+site_url: https://ivanshamaev.github.io/trino-docs/
 docs_dir: docs
 
+# Тема Material: боковое меню, поиск, тёмная тема
 theme:
   name: material
-  language: en
+  language: ru
   palette:
     - scheme: default
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-7
-        name: Switch to dark mode
+        name: Тёмная тема
     - scheme: slate
       primary: indigo
       accent: indigo
       toggle:
         icon: material/brightness-4
-        name: Switch to light mode
+        name: Светлая тема
   features:
     - navigation.instant
     - navigation.tracking
-    - navigation.tabs
-    - navigation.sections
-    - navigation.expand
-    - navigation.top
+    - navigation.indexes
+    - navigation.path
     - search.suggest
     - search.highlight
     - content.tabs.link
-    - content.code.copy
   icon:
     repo: fontawesome/brands/github
 
+# Репозиторий для ссылки «Edit» (замените на свой)
+repo_url: https://github.com/ivanshamaev/trino-docs/
+edit_uri: edit/main/
+repo_name: ivanshamaev/trino-docs
+
 plugins:
   - search
+  - glightbox
 
 markdown_extensions:
   - abbr
@@ -52,9 +54,6 @@ markdown_extensions:
   - tables
   - toc:
       permalink: true
-
-# Strict mode off: pages not in nav are still built (e.g. sql/select.md)
-strict: false
 
 nav:
   - Home: index.md
