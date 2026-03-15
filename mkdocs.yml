@@ -1,0 +1,76 @@
+# Trino Documentation — MkDocs Material
+# https://squidfunk.github.io/mkdocs-material/
+
+site_name: Trino Documentation
+site_description: Documentation for Trino distributed SQL query engine
+site_author: Trino
+
+repo_url: https://github.com/trinodb/trino
+edit_uri: edit/main/
+docs_dir: docs
+
+theme:
+  name: material
+  language: en
+  palette:
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
+  features:
+    - navigation.instant
+    - navigation.tracking
+    - navigation.tabs
+    - navigation.sections
+    - navigation.expand
+    - navigation.top
+    - search.suggest
+    - search.highlight
+    - content.tabs.link
+    - content.code.copy
+  icon:
+    repo: fontawesome/brands/github
+
+plugins:
+  - search
+
+markdown_extensions:
+  - abbr
+  - admonition
+  - attr_list
+  - def_list
+  - footnotes
+  - md_in_html
+  - tables
+  - toc:
+      permalink: true
+
+# Strict mode off: pages not in nav are still built (e.g. sql/select.md)
+strict: false
+
+nav:
+  - Home: index.md
+  - Overview: overview.md
+  - Installation: installation.md
+  - Client: client.md
+  - Security: security.md
+  - Admin: admin.md
+  - Optimizer: optimizer.md
+  - Connector: connector.md
+  - Object storage: object-storage.md
+  - Functions: functions.md
+  - User-defined functions: udf.md
+  - Language: language.md
+  - SQL: sql.md
+  - Develop: develop.md
+  - Glossary: glossary.md
+  - Appendix: appendix.md
+  - Release notes: release.md
