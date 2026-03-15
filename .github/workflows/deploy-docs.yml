@@ -42,6 +42,8 @@ jobs:
 
       - name: Build documentation
         working-directory: ./docs/sphinx
+        env:
+          TRINO_VERSION: latest
         run: |
           sphinx-build -W --keep-going -b html . ../_build/html
 

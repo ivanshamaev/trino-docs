@@ -20,7 +20,6 @@
 
 import os
 import sys
-import xml.dom.minidom
 
 try:
     sys.dont_write_bytecode = True
@@ -41,22 +40,22 @@ def node_text(node):
     return node.childNodes[0].data
 
 
-def maven_version(pom):
-    dom = xml.dom.minidom.parse(pom)
-    project = dom.childNodes[0]
-
-    version = child_node(project, 'version')
-    if version:
-        return node_text(version)
-
-    parent = child_node(project, 'parent')
-    version = child_node(parent, 'version')
-    return node_text(version)
-
-
 def get_version():
     version = os.environ.get('TRINO_VERSION', '').strip()
-    return version or maven_version('../../../pom.xml')
+    if version:
+        return version
+    
+    # Try to read from VERSION file if it exists
+    version_file = os.path.join(os.path.dirname(__file__), '..', 'VERSION')
+    if os.path.isfile(version_file):
+        try:
+            with open(version_file, 'r') as f:
+                return f.read().strip()
+        except:
+            pass
+    
+    # Default fallback version
+    return 'latest'
 
 
 def globalReplace(app, docname, source):
