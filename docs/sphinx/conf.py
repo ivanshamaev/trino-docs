@@ -157,6 +157,11 @@ html_css_files = [
     'trino.css',
 ]
 
+html_js_files = [
+    'collapsible-menu.js',
+    'dark-mode.js',
+]
+
 suppress_warnings = [
     'config.cache'
 ]

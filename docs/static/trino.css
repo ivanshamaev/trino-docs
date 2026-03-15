@@ -1,0 +1,275 @@
+/* CSS Variables for theming */
+:root {
+    /* Light mode colors */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f5f5f5;
+    --text-primary: #212121;
+    --text-secondary: #757575;
+    --border-color: #e0e0e0;
+    --accent-color: #2196f3;
+    --accent-hover: #1976d2;
+    --code-bg: #f5f5f5;
+    --code-text: #d01c8b;
+}
+
+/* Dark mode */
+:root[data-theme="dark"],
+body.dark-mode {
+    --bg-primary: #1e1e1e;
+    --bg-secondary: #2d2d2d;
+    --text-primary: #ffffff;
+    --text-secondary: #b0b0b0;
+    --border-color: #404040;
+    --accent-color: #64b5f6;
+    --accent-hover: #90caf9;
+    --code-bg: #2d2d2d;
+    --code-text: #f08080;
+}
+
+/* Base styles */
+* {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease;
+}
+
+html {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+/* Text colors */
+p, span, li, dt, dd {
+    color: var(--text-primary);
+}
+
+/* Headers */
+h1, h2, h3, h4, h5, h6 {
+    color: var(--text-primary);
+}
+
+/* Links */
+a {
+    color: var(--accent-color);
+    text-decoration: none;
+    transition: color 0.2s;
+}
+
+a:hover {
+    color: var(--accent-hover);
+}
+
+/* Code blocks */
+code, pre {
+    background-color: var(--code-bg);
+    color: var(--code-text);
+    border-color: var(--border-color);
+}
+
+.highlight {
+    background-color: var(--code-bg);
+}
+
+.highlight pre {
+    background-color: var(--code-bg);
+}
+
+/* Borders and dividers */
+hr, .divider, .separator {
+    border-color: var(--border-color);
+}
+
+/* Tables */
+table {
+    border-collapse: collapse;
+}
+
+table, th, td {
+    border-color: var(--border-color);
+}
+
+thead, tbody {
+    background-color: var(--bg-primary);
+}
+
+tbody tr:nth-child(even) {
+    background-color: var(--bg-secondary);
+}
+
+th {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+}
+
+/* Forms and inputs */
+input, textarea, select {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+input:focus, textarea:focus, select:focus {
+    border-color: var(--accent-color);
+    outline: none;
+}
+
+/* Buttons */
+button, .btn, input[type="button"], input[type="submit"] {
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: 1px solid var(--accent-color);
+    cursor: pointer;
+    transition: background-color 0.2s, border-color 0.2s;
+}
+
+button:hover, .btn:hover {
+    background-color: var(--accent-hover);
+    border-color: var(--accent-hover);
+}
+
+/* Dark mode toggle button */
+#dark-mode-toggle {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 1000;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background-color: var(--accent-color);
+    color: #ffffff;
+    border: none;
+    font-size: 24px;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+}
+
+#dark-mode-toggle:hover {
+    background-color: var(--accent-hover);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+    transform: scale(1.1);
+}
+
+/* Collapsible menu styles */
+.globaltoc ul ul {
+    margin-left: 10px;
+}
+
+.toctree-toggle {
+    user-select: none;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    transition: transform 0.2s ease-in-out;
+    color: var(--accent-color);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.toctree-toggle:hover {
+    opacity: 0.7;
+}
+
+/* Navigation styles */
+.globaltoc {
+    font-size: 14px;
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+}
+
+.globaltoc li {
+    margin: 2px 0;
+}
+
+.globaltoc a {
+    text-decoration: none;
+    color: var(--text-secondary);
+    transition: color 0.2s;
+}
+
+.globaltoc a:hover {
+    color: var(--accent-color);
+}
+
+.globaltoc a.current {
+    color: var(--accent-color);
+    font-weight: 600;
+}
+
+/* Nested list styling */
+.globaltoc ul ul a {
+    padding-left: 5px;
+}
+
+.globaltoc ul ul ul a {
+    padding-left: 10px;
+}
+
+.globaltoc ul ul ul ul a {
+    padding-left: 15px;
+}
+
+/* Blockquotes */
+blockquote {
+    border-left: 4px solid var(--accent-color);
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+/* Admonitions */
+.admonition {
+    background-color: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-left: 4px solid var(--accent-color);
+    padding: 10px 15px;
+    margin: 10px 0;
+}
+
+.admonition-title {
+    font-weight: bold;
+    color: var(--accent-color);
+}
+
+/* Search */
+.search input {
+    background-color: var(--bg-secondary);
+    color: var(--text-primary);
+    border: 1px solid var(--border-color);
+}
+
+.search input::placeholder {
+    color: var(--text-secondary);
+}
+
+/* Print styles */
+@media print {
+    #dark-mode-toggle {
+        display: none;
+    }
+    
+    body {
+        background-color: #ffffff;
+        color: #000000;
+    }
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    #dark-mode-toggle {
+        bottom: 10px;
+        right: 10px;
+        width: 45px;
+        height: 45px;
+        font-size: 20px;
+    }
+}
