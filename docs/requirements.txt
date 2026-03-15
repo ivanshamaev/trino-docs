@@ -1,5 +1,6 @@
 sphinx>=7.0,<8.0
 sphinx-rtd-theme>=2.0.0
+sphinx-material>=0.0.36
 pygments>=2.16.1
 sphinx-tabs>=3.4.5
 sphinxcontrib-video>=0.1.1
