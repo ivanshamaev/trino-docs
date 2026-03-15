@@ -7,31 +7,3 @@
 {% block fonticon %}
 <!-- material icons loaded from trino.css -->
 {% endblock %}
-
-{% block script %}
-{{ super() }}
-<script>
-// Initialize dark mode button as fallback
-(function() {
-    function initDarkModeButton() {
-        const btn = document.getElementById('dark-mode-toggle');
-        if (btn && !btn._darkModeInitialized) {
-            btn._darkModeInitialized = true;
-            btn.addEventListener('click', function(e) {
-                e.preventDefault();
-                e.stopPropagation();
-                window.toggleDarkMode && window.toggleDarkMode();
-            });
-        }
-    }
-    
-    if (document.readyState === 'loading') {
-        document.addEventListener('DOMContentLoaded', initDarkModeButton);
-    } else {
-        initDarkModeButton();
-    }
-    
-    window.addEventListener('load', initDarkModeButton);
-})();
-</script>
-{% endblock %}
