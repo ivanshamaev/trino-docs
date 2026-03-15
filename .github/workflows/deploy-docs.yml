@@ -36,9 +36,7 @@ jobs:
         working-directory: ./docs
         run: |
           python -m pip install --upgrade pip
-          pip install sphinx sphinx-rtd-theme pygments==2.16.1
-          # Install any additional Sphinx extensions required
-          pip install sphinx-tabs sphinxcontrib-video
+          pip install -r requirements.txt
 
       - name: Build documentation
         working-directory: ./docs/sphinx
